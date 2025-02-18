@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Notificações</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Dashboard de Notificações</h1>
+
+    <div class="filters">
+        <label for="colaborador">Colaborador:</label>
+        <select id="colaborador">
+            <option value="">Todos</option>
+        </select>
+
+        <label for="itemErro">Item de Erro:</label>
+        <select id="itemErro">
+            <option value="">Todos</option>
+        </select>
+
+        <label for="itemAtividade">Item de Atividade:</label>
+        <select id="itemAtividade">
+            <option value="">Todos</option>
+        </select>
+
+        <button onclick="filtrarDados()">Filtrar</button>
+    </div>
+
+    <table id="notificacoesTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Colaborador</th>
+                <th>Mensagem</th>
+                <th>Observações</th>
+                <th>Data/Hora</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Dados serão preenchidos aqui -->
+        </tbody>
+    </table>
+
+    <script src="script.js"></script>
+</body>
+</html>
