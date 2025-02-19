@@ -1,3 +1,6 @@
+// Configuração do endereço da API
+const API_BASE_URL = "https://apiseg.vercel.app";
+
 document.addEventListener('DOMContentLoaded', function () {
     carregarDadosIniciais();
 });
@@ -25,25 +28,25 @@ async function carregarDadosIniciais() {
 }
 
 async function fetchNotificacoes() {
-    const response = await fetch('/get-notificacoes');
+    const response = await fetch(`${API_BASE_URL}/get-notificacoes`);
     const data = await response.json();
     return data.notificacoes;
 }
 
 async function fetchColaboradores() {
-    const response = await fetch('/get-colaboradores');
+    const response = await fetch(`${API_BASE_URL}/get-colaboradores`);
     const data = await response.json();
     return data.colaboradores;
 }
 
 async function fetchItensErro() {
-    const response = await fetch('/get-itens-erro');
+    const response = await fetch(`${API_BASE_URL}/get-itens-erro`);
     const data = await response.json();
     return data.itens_erro;
 }
 
 async function fetchItensAtividades() {
-    const response = await fetch('/get-itens-atividades');
+    const response = await fetch(`${API_BASE_URL}/get-itens-atividades`);
     const data = await response.json();
     return data.itens_atividades;
 }
