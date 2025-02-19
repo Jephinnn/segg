@@ -11,8 +11,8 @@
 
     <div class="filters">
         <label for="colaboradorInput">Colaborador:</label>
-        <input type="text" id="colaboradorInput" placeholder="Digite o nome..." onkeyup="filtrarColaboradores()">
-        <select id="colaborador" size="5" onclick="selecionarColaborador()" style="display: none;"></select>
+        <input type="text" id="colaboradorInput" list="colaboradorList" placeholder="Digite um nome...">
+        <datalist id="colaboradorList"></datalist>
 
         <label for="itemErro">Item de Erro:</label>
         <select id="itemErro">
