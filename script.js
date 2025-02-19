@@ -12,7 +12,7 @@ async function carregarColaboradores() {
         const response = await fetch(`${API_URL}/get-colaboradores`);
         const data = await response.json();
         const select = document.getElementById('colaborador');
-        select.innerHTML = '<option value="">Todos</option>'; // Limpa as opções
+        select.innerHTML = '<option value="">Todos</option>';
         data.colaboradores.forEach(colaborador => {
             const option = document.createElement('option');
             option.value = colaborador;
@@ -67,9 +67,9 @@ async function carregarNotificacoes() {
         data.notificacoes.forEach(notificacao => {
             const row = document.createElement('tr');
             row.innerHTML = `
-                <td>${notificacao.notificacao_id}</td>
                 <td>${notificacao.colaborador}</td>
                 <td>${notificacao.mensagem}</td>
+                <td>${notificacao.mensagem2}</td>
                 <td>${notificacao.observacoes}</td>
                 <td>${new Date(notificacao.dataHora).toLocaleString()}</td>
             `;
@@ -84,7 +84,22 @@ function filtrarDados() {
     const colaborador = document.getElementById('colaborador').value;
     const itemErro = document.getElementById('itemErro').value;
     const itemAtividade = document.getElementById('itemAtividade').value;
+    
+    const rows = document.querySelectorAll('#notificacoesTable tbody tr');
+    rows.forEach(row => {
+        const colab = row.children[0].textContent;
+        const mensagem = row.children[1].textContent;
+        const mensagem2 = row.children[2].textContent;
+        const observacoes = row.children[3].textContent;
+        
+        const matchColaborador = !colaborador || colab === colaborador;
+        const matchItemErro = !itemErro || mensagem.includes(itemErro) || mensagem2.includes(itemErro);
+        const matchItemAtividade = !itemAtividade || observacoes.includes(itemAtividade);
 
-    // Implemente a lógica de filtragem aqui
-    console.log('Filtrar por:', colaborador, itemErro, itemAtividade);
+        if (matchColaborador && matchItemErro && matchItemAtividade) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
 }
