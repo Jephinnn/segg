@@ -1,4 +1,4 @@
-const API_URL = 'https://apiseg.vercel.app/'; // Substitua pelo endereço da sua API
+const API_URL = 'https://apiseg.vercel.app'; // Substitua pelo endereço da sua API
 
 document.addEventListener('DOMContentLoaded', function() {
     carregarColaboradores();
