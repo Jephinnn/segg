@@ -15,13 +15,14 @@ h1 {
     gap: 10px;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
 .filters label {
     font-weight: bold;
 }
 
-.filters select, .filters button {
+.filters input, .filters select, .filters button {
     padding: 8px;
     border-radius: 5px;
     border: 1px solid #ccc;
