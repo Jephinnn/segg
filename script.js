@@ -58,10 +58,9 @@ function exibirNotificacoes(notificacoes) {
     notificacoes.forEach(notificacao => {
         const row = document.createElement('tr');
         row.innerHTML = `
-            <td>${notificacao.notificacao_id}</td>
             <td>${notificacao.colaborador}</td>
             <td>${notificacao.mensagem}</td>
-			<td>${notificacao.mensagem2}</td>
+	    <td>${notificacao.mensagem2}</td>
             <td>${notificacao.observacoes}</td>
             <td>${new Date(notificacao.dataHora).toLocaleString()}</td>
         `;
