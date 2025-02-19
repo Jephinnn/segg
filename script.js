@@ -1,4 +1,4 @@
-const API_URL = 'https://apiseg.vercel.app'; // Substitua pelo endereço da sua API
+const API_URL = 'https://apiseg.vercel.app'; // URL da API
 
 document.addEventListener('DOMContentLoaded', async function () {
     await carregarColaboradores();
@@ -7,63 +7,91 @@ document.addEventListener('DOMContentLoaded', async function () {
     await carregarNotificacoes();
 });
 
-// Função para carregar os colaboradores e preencher o datalist
+// Lista para armazenar os colaboradores
+let listaColaboradores = [];
+
+// Carregar os colaboradores na lista suspensa
 async function carregarColaboradores() {
     try {
         const response = await fetch(`${API_URL}/get-colaboradores`);
         const data = await response.json();
-        const datalist = document.getElementById('colaboradorList');
-        datalist.innerHTML = ''; // Limpa o datalist antes de preencher
+        listaColaboradores = data.colaboradores;
 
-        data.colaboradores.forEach(colaborador => {
-            const option = document.createElement('option');
-            option.value = colaborador;
-            datalist.appendChild(option);
-        });
+        atualizarListaColaboradores('');
     } catch (error) {
         console.error('Erro ao carregar colaboradores:', error);
     }
 }
 
-// Função para carregar itens de erro
+// Atualiza a lista de colaboradores conforme o usuário digita
+function atualizarListaColaboradores(filtro) {
+    const select = document.getElementById('colaborador');
+    select.innerHTML = '';
+
+    const filtrados = listaColaboradores.filter(nome => nome.toLowerCase().includes(filtro.toLowerCase()));
+
+    filtrados.forEach(nome => {
+        const option = document.createElement('option');
+        option.value = nome;
+        option.textContent = nome;
+        select.appendChild(option);
+    });
+
+    select.style.display = filtrados.length > 0 ? 'block' : 'none';
+}
+
+// Filtrar colaboradores enquanto digita
+function filtrarColaboradores() {
+    const input = document.getElementById('colaboradorInput');
+    atualizarListaColaboradores(input.value);
+}
+
+// Selecionar um colaborador da lista suspensa
+function selecionarColaborador() {
+    const select = document.getElementById('colaborador');
+    const input = document.getElementById('colaboradorInput');
+
+    if (select.selectedIndex !== -1) {
+        input.value = select.value;
+        select.style.display = 'none';
+    }
+}
+
+// Carregar itens de erro
 async function carregarItensErro() {
     try {
         const response = await fetch(`${API_URL}/get-itens-erro`);
         const data = await response.json();
-        const select = document.getElementById('itemErro');
-        select.innerHTML = '<option value="">Todos</option>';
-
-        data.itens_erro.forEach(item => {
-            const option = document.createElement('option');
-            option.value = item;
-            option.textContent = item;
-            select.appendChild(option);
-        });
+        preencherSelect('itemErro', data.itens_erro);
     } catch (error) {
         console.error('Erro ao carregar itens de erro:', error);
     }
 }
 
-// Função para carregar itens de atividade
+// Carregar itens de atividade
 async function carregarItensAtividades() {
     try {
         const response = await fetch(`${API_URL}/get-itens-atividades`);
         const data = await response.json();
-        const select = document.getElementById('itemAtividade');
-        select.innerHTML = '<option value="">Todos</option>';
-
-        data.itens_atividades.forEach(item => {
-            const option = document.createElement('option');
-            option.value = item;
-            option.textContent = item;
-            select.appendChild(option);
-        });
+        preencherSelect('itemAtividade', data.itens_atividades);
     } catch (error) {
         console.error('Erro ao carregar itens de atividades:', error);
     }
 }
 
-// Função para carregar notificações
+// Preenche um `<select>` com opções
+function preencherSelect(id, itens) {
+    const select = document.getElementById(id);
+    select.innerHTML = '<option value="">Todos</option>';
+    itens.forEach(item => {
+        const option = document.createElement('option');
+        option.value = item;
+        option.textContent = item;
+        select.appendChild(option);
+    });
+}
+
+// Carregar notificações na tabela
 async function carregarNotificacoes() {
     try {
         const response = await fetch(`${API_URL}/get-notificacoes`);
@@ -87,7 +115,7 @@ async function carregarNotificacoes() {
     }
 }
 
-// Função para filtrar os dados da tabela
+// Filtra os dados da tabela conforme os filtros aplicados
 function filtrarDados() {
     const colaborador = document.getElementById('colaboradorInput').value.toLowerCase();
     const itemErro = document.getElementById('itemErro').value.toLowerCase();
