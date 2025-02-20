@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colaboradores - Gestor de Segurança</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <h3>Gestor de Segurança</h3>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="notificacoes.html"><i class="fas fa-clipboard-list"></i> Notificações</a></li>
+                <li class="active"><a href="colaboradores.html"><i class="fas fa-users"></i> Colaboradores</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h2>Colaboradores</h2>
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquisar colaborador...">
+            </div>
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <h3>Total de Colaboradores</h3>
+                <p class="number" id="totalColaboradores">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Colaboradores com Notificações</h3>
+                <p class="number" id="colaboradoresComNotificacoes">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Média de Notificações por Colaborador</h3>
+                <p class="number" id="mediaNotificacoes">0</p>
+            </div>
+        </div>
+
+        <div class="graficos-container">
+            <div class="grafico-card">
+                <h3>Distribuição de Notificações</h3>
+                <div class="chart-wrapper">
+                    <canvas id="distribuicaoChart"></canvas>
+                </div>
+            </div>
+            <div class="grafico-card">
+                <h3>Tipo de Notificações</h3>
+                <div class="chart-wrapper">
+                    <canvas id="tiposNotificacoesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="colaboradoresTable">
+                <thead>
+                    <tr>
+                        <th>Colaborador</th>
+                        <th>Total de Notificações</th>
+                        <th>Falhas de EPI</th>
+                        <th>Falhas de Atividade</th>
+                        <th>Última Notificação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Preenchido via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script src="colaboradores.js"></script>
+</body>
+</html> 

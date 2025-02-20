@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notificações - Gestor de Segurança</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <h3>Gestor de Segurança</h3>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                <li class="active"><a href="notificacoes.html"><i class="fas fa-clipboard-list"></i> Notificações</a></li>
+                <li><a href="colaboradores.html"><i class="fas fa-users"></i> Colaboradores</a></li>
+                <li><a href="#"><i class="fas fa-cog"></i> Configurações</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h2>Notificações</h2>
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquisar notificações...">
+            </div>
+        </div>
+
+        <div class="filters-container">
+            <div class="filter-group">
+                <label for="colaboradorInput">Colaborador:</label>
+                <input type="text" id="colaboradorInput" list="colaboradorList" placeholder="Digite um nome...">
+                <datalist id="colaboradorList"></datalist>
+            </div>
+
+            <div class="filter-group">
+                <label for="itemErro">Item de EPI:</label>
+                <select id="itemErro">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="itemAtividade">Item de Atividade:</label>
+                <select id="itemAtividade">
+                    <option value="">Todos</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label>Período:</label>
+                <input type="date" id="dataInicialNotif">
+                <input type="date" id="dataFinalNotif">
+            </div>
+
+            <button onclick="filtrarNotificacoes()" class="filter-btn">Filtrar</button>
+        </div>
+
+        <div class="table-container">
+            <table id="notificacoesTable">
+                <thead>
+                    <tr>
+                        <th>Colaborador</th>
+                        <th>Falha de EPI</th>
+                        <th>Falha de Atividade</th>
+                        <th>Observações</th>
+                        <th>Data/Hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Preenchido via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script src="notificacoes.js"></script>
+</body>
+</html> 
