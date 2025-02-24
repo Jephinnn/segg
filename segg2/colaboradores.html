@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colaboradores - Gestor de Segurança</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="theme-switch" onclick="toggleTheme()">
+        <i class="fas fa-sun" id="lightIcon"></i>
+        <i class="fas fa-moon" id="darkIcon"></i>
+    </div>
+
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <h3>Gestor de Segurança</h3>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="dashboard.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="notificacoes.html"><i class="fas fa-clipboard-list"></i> Notificações</a></li>
+                <li><a href="colaboradores.html"><i class="fas fa-users"></i> Colaboradores</a></li>
+                <li class="admin-menu">
+                    <a href="#"><i class="fas fa-cog"></i> Administrativo</a>
+                    <ul class="submenu">
+                        <li><a href="adicionar-colaborador.html"><i class="fas fa-user-plus"></i> Adicionar Colaborador</a></li>
+                        <li><a href="remover-colaborador.html"><i class="fas fa-user-minus"></i> Remover Colaborador</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="user-footer">
+            <div class="user-info">
+                <div class="user-details">
+                    <span id="userNameDisplay"></span>
+                    <span id="userRoleDisplay"></span>
+                </div>
+                <button onclick="logout()" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <h2>Colaboradores</h2>
+            <div class="header-controls">
+                <div class="theme-switch" onclick="toggleTheme()">
+                    <i class="fas fa-sun" id="lightIcon"></i>
+                    <i class="fas fa-moon" id="darkIcon"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <h3>Total de Colaboradores</h3>
+                <p class="number" id="totalColaboradores">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Colaboradores com Notificações</h3>
+                <p class="number" id="colaboradoresComNotificacoes">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Média de Notificações por Colaborador</h3>
+                <p class="number" id="mediaNotificacoes">0</p>
+            </div>
+        </div>
+
+        <div class="graficos-container">
+            <div class="grafico-card">
+                <h3>Distribuição de Notificações</h3>
+                <div class="chart-wrapper">
+                    <canvas id="distribuicaoChart"></canvas>
+                </div>
+            </div>
+            <div class="grafico-card">
+                <h3>Tipo de Notificações</h3>
+                <div class="chart-wrapper">
+                    <canvas id="tiposNotificacoesChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <table id="colaboradoresTable">
+                <thead>
+                    <tr>
+                        <th>Colaborador</th>
+                        <th>Total de Notificações</th>
+                        <th>Falhas de EPI</th>
+                        <th>Falhas de Atividade</th>
+                        <th>Última Notificação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Preenchido via JavaScript -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script src="colaboradores.js"></script>
+    <script src="menu.js"></script>
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html> 

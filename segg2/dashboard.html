@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Segurança</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Remova ou comente esta div -->
+    <!-- <div class="theme-switch" onclick="toggleTheme()">
+        <i class="fas fa-sun" id="lightIcon"></i>
+        <i class="fas fa-moon" id="darkIcon"></i>
+    </div> -->
+
+    <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+    </button>
+
+    <div class="sidebar" id="sidebar">
+        <div class="logo">
+            <h3>Gestor de Segurança</h3>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="index.html"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                <li><a href="notificacoes.html"><i class="fas fa-clipboard-list"></i> Notificações</a></li>
+                <li><a href="colaboradores.html"><i class="fas fa-users"></i> Colaboradores</a></li>
+                <li class="admin-menu">
+                    <a href="#"><i class="fas fa-cog"></i> Administrativo</a>
+                    <ul class="submenu">
+                        <li><a href="adicionar-colaborador.html"><i class="fas fa-user-plus"></i> Adicionar Colaborador</a></li>
+                        <li><a href="remover-colaborador.html"><i class="fas fa-user-minus"></i> Remover Colaborador</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+        <div class="user-footer">
+            <div class="user-info">
+                <div class="user-details">
+                    <span id="userNameDisplay"></span>
+                    <span id="userRoleDisplay"></span>
+                </div>
+                <button onclick="logout()" class="btn-logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="header">
+            <div class="welcome-container">
+                <h2>Bem-vindo de volta ao SEG+ - Sistema de Gerenciamento de Segurança</h2>
+            </div>
+            <div class="header-controls">
+                <div class="theme-switch" onclick="toggleTheme()">
+                    <i class="fas fa-sun" id="lightIcon"></i>
+                    <i class="fas fa-moon" id="darkIcon"></i>
+                </div>
+            </div>
+        </div>
+
+        <div class="dashboard-stats">
+            <div class="stat-card">
+                <h3>Total de Notificações</h3>
+                <p class="number" id="totalNotificacoes">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Notificações EPI</h3>
+                <p class="number" id="totalEPI">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Notificações Atividades</h3>
+                <p class="number" id="totalAtividades">0</p>
+            </div>
+            <div class="stat-card">
+                <h3>Taxa de Não Conformidade</h3>
+                <p class="number" id="taxaNaoConformidade">0%</p>
+            </div>
+        </div>
+
+        <div class="charts-container">
+            <div class="chart-card">
+                <h3>Análise de Notificações</h3>
+                <div class="chart-filters">
+                    <div class="date-filter">
+                        <label for="dataInicial">De:</label>
+                        <input type="date" id="dataInicial" placeholder="DD/MM/AAAA">
+                        
+                        <label for="dataFinal">Até:</label>
+                        <input type="date" id="dataFinal" placeholder="DD/MM/AAAA">
+                        
+                        <button onclick="filtrarPorPeriodo()" class="filter-btn">Filtrar</button>
+                    </div>
+                </div>
+                <canvas id="notificacoesChart"></canvas>
+            </div>
+            <div class="chart-card">
+                <h3>Últimas Notificações</h3>
+                <div class="recent-notifications" id="recentNotifications">
+                    <!-- Preenchido via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="https://kit.fontawesome.com/your-code.js"></script>
+    <script src="script.js"></script>
+    <script src="menu.js"></script>
+    <script src="theme.js"></script>
+    <script src="auth.js"></script>
+</body>
+</html>
